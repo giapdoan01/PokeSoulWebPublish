@@ -104,6 +104,10 @@ app.use('/addressables/webgl', proxyBundleRequest);
 app.get('/addressables-bundles/:fileName', proxyBundleRequest);
 app.get('/github-bundles/:fileName', proxyBundleRequest);
 
+app.get('/check-health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 app.use(express.static(rootDir, {
   index: false,
   setHeaders: (res, filePath) => {
