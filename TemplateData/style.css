@@ -41,9 +41,10 @@ body::before {
   justify-content: center;
   box-sizing: border-box;
   background:
-    radial-gradient(circle at top, rgba(93, 141, 255, 0.2), transparent 34%),
-    radial-gradient(circle at 20% 20%, rgba(78, 198, 255, 0.16), transparent 26%),
-    linear-gradient(160deg, rgba(5, 9, 16, 0.98), rgba(10, 17, 28, 0.98));
+    linear-gradient(160deg, rgba(5, 9, 16, 0.42), rgba(10, 17, 28, 0.7)),
+    #07111f;
+  background-position: center;
+  background-size: cover;
 }
 
 #unity-canvas {
@@ -58,17 +59,40 @@ body::before {
   aspect-ratio: 9 / 16;
   max-width: none;
   max-height: none;
+  border: 3px solid rgba(255, 255, 255, 0.72);
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 1px rgba(116, 196, 255, 0.5),
+    0 16px 45px rgba(0, 0, 0, 0.55);
+  box-sizing: border-box;
+}
+
+.unity-mobile #unity-canvas {
+  border: 0;
   border-radius: 0;
   box-shadow: none;
 }
 
 #unity-loading-bar {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  inset: 0;
   display: none;
-  z-index: 3;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  background:
+    linear-gradient(180deg, rgba(7, 20, 42, 0.16), rgba(8, 12, 29, 0.76)),
+    url('../assets/LoadingImage.png') center / cover no-repeat;
+}
+
+#unity-loading-content {
+  display: flex;
+  width: min(82vw, 420px);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.65);
 }
 
 #unity-logo {
@@ -77,19 +101,46 @@ body::before {
   background: url('unity-logo-dark.png') no-repeat center;
 }
 
+#unity-loading-logo {
+  display: block;
+  width: min(68vw, 300px);
+  height: auto;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.45));
+}
+
+#unity-loading-title {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+#unity-loading-subtitle {
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.86);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 14px;
+}
+
 #unity-progress-bar-empty {
-  width: 141px;
-  height: 18px;
-  margin-top: 10px;
-  margin-left: 6.5px;
-  background: url('progress-bar-empty-dark.png') no-repeat center;
+  width: min(72vw, 280px);
+  height: 12px;
+  margin-top: 22px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  background: rgba(11, 24, 50, 0.6);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
 }
 
 #unity-progress-bar-full {
   width: 0%;
-  height: 18px;
-  margin-top: 10px;
-  background: url('progress-bar-full-dark.png') no-repeat center;
+  height: 100%;
+  margin-top: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #75d8ff, #fff0a3, #ffad58);
+  transition: width 160ms ease-out;
 }
 
 #unity-footer {
